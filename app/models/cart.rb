@@ -8,4 +8,8 @@ class Cart < ApplicationRecord
 			sum + item.product.price
 		end
 	end
+
+  def checkout!
+    update(checked_out: true)
+  end
 end
