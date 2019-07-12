@@ -43,7 +43,9 @@
 		</tbody>
 	</table>
   <div class="col-lg-12">
-    <% if current_user.has_money_for?(@cart) %>
+    <% if @cart.cart_items.empty? %>
+      <div class="alert alert-info">You have no items in your cart :(</div>
+    <% elsif current_user.has_money_for?(@cart) %>
       <%= link_to 'Checkout', cart_checkout_path(@cart), class: 'btn btn-success' %>
     <% else %>
       <div class="alert alert-danger">You have insufficient money to purchase the products!</div>
