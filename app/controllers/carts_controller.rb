@@ -16,7 +16,13 @@ class CartsController < ApplicationController
   def checkout
     current_user.pay_and_checkout!(@cart)
 
-    redirect_to root_path
+    redirect_to carts_path(@cart)
+  end
+
+  def show
+    @checked_out_cart = current_user.carts.where(id: params[:id], checked_out: true).last
+
+    redirect_to root_path if @checked_out_cart.nil?
   end
 
   private

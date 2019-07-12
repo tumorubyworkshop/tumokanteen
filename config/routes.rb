@@ -11,4 +11,6 @@ Rails.application.routes.draw do
 	get '/cart/add', to: 'carts#add'
 
   get '/cart/checkout', to: 'carts#checkout'
+
+  get '/cart/:id', to: 'carts#show', as: 'carts'
 end
